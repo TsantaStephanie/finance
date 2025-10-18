@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Dashboard - Gestion des Finances</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-chart-pie"></i> Finance Dashboard</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="menu-item active" data-section="recettes">
+                    <a href="#recettes">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>Recettes</span>
+                    </a>
+                </li>
+                <li class="menu-item" data-section="depenses">
+                    <a href="#depenses">
+                        <i class="fas fa-arrow-down"></i>
+                        <span>Dépenses</span>
+                    </a>
+                </li>
+              
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <h1 id="page-title">Recettes</h1>
+               
+            </header>
+
+            <!-- Recettes Section -->
+            <section id="recettes" class="content-section active">
+                <div class="dashboard-grid">
+                    <!-- Dashboard Circulaire -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Répartition des Recettes 2025</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container">
+                                <canvas id="recettesChart"></canvas>
+                            </div>
+                            <div class="chart-legend" id="recettesLegend"></div>
+                        </div>
+                    </div>
+
+                    <!-- Graphiques de Détails -->
+                    <div class="card full-width">
+                        <div class="card-header">
+                            <h3>Évolution des Recettes 2024-2025</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="charts-row">
+                                <div class="chart-half">
+                                    <canvas id="recettesFiscalesChart"></canvas>
+                                </div>
+                                <div class="chart-half">
+                                    <canvas id="recettesDouanieresChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tableau de Détails -->
+                    <div class="card full-width">
+                        <div class="card-header">
+                            <h3>Détails des Recettes</h3>
+                            <div class="card-actions">
+                                <select id="recetteType" class="form-select">
+                                    <option value="fiscales">Recettes Fiscales</option>
+                                    <option value="douanieres">Recettes Douanières</option>
+                                    <option value="non-fiscales">Recettes Non Fiscales</option>
+                                    <option value="dons">Dons</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <!-- Filtres -->
+                            <div class="filters-container">
+                                <div class="filter-group">
+                                    <label for="natureFilter">Filtrer par nature :</label>
+                                    <input type="text" id="natureFilter" class="form-input" placeholder="Rechercher une nature...">
+                                </div>
+                                <div class="filter-group">
+                                    <label for="montantMin">Montant minimum :</label>
+                                    <input type="number" id="montantMin" class="form-input" placeholder="Min" min="0">
+                                </div>
+                                <div class="filter-group">
+                                    <label for="montantMax">Montant maximum :</label>
+                                    <input type="number" id="montantMax" class="form-input" placeholder="Max" min="0">
+                                </div>
+                                <div class="filter-group">
+                                    <button id="clearFilters" class="btn btn-secondary">Effacer filtres</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-container">
+                                <table class="data-table" id="recettesTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Nature</th>
+                                            <th>2024 (Milliards)</th>
+                                            <th>2025 (Milliards)</th>
+                                            <th>Écart</th>
+                                            <th>Évolution (%)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="recettesTableBody">
+                                        <!-- Données chargées dynamiquement -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+           
+
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
