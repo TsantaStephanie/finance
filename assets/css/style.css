@@ -483,3 +483,35 @@ body {
 .color-8 { background-color: #38f9d7; }
 .color-9 { background-color: #ffecd2; }
 .color-10 { background-color: #fcb69f; }
+
+
+
+/* Styles pour le diagramme de Gantt */
+.chart-container {
+    position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .chart-container {
+        height: 300px;
+    }
+}
+
+/* CSS pour le conteneur avec défilement */
+.scrollable-chart-container {
+    position: relative;
+    height: 600px;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.scrollable-chart-container canvas {
+    min-height: 800px; /* Hauteur minimale pour permettre le défilement */
+}
